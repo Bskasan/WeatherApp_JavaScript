@@ -27,4 +27,4 @@ User story;
 
 🔥 You can use [OpenWeather Api](https://openweathermap.org/) for your app. 🔥
 
-🔥 I am always open any contribute for this project 🔥
+ 🔥I am always open any contribute for this project 🔥
