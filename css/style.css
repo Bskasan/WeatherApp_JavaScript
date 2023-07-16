@@ -75,6 +75,8 @@ h1{
 }
 
 .container {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
@@ -213,6 +215,10 @@ h1{
 #logo {
   width: 100px;
   height: 100px;
+}
+
+.container a:hover{
+  color: black;
 }
 
 /* MQ
