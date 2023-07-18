@@ -3,11 +3,11 @@ const input = document.querySelector("form input");
 const msgSpan = form.querySelector(".msg");
 const listCities = document.querySelector(".container .cities");
 
-localStorage.setItem(
-  "apiKey",
-  // ? Encrypted Our Api to save it local storage.
-  EncryptStringAES("c329c3b96528c0c0f92577a6850e5a5e")
-);
+// localStorage.setItem(
+//   "apiKey",
+// ? Encrypted Our Api to save it local storage.
+//   EncryptStringAES("c329c3b96528c0c0f92577a6850e5a5e")
+// );
 
 form.addEventListener("submit", (e) => {
   alert("Form was Submitted!");
@@ -22,8 +22,30 @@ form.addEventListener("submit", (e) => {
 });
 
 // ! We are going to be using axios in React !
-const getWeatherDataFromAPI = () => {
+const getWeatherDataFromAPI = async () => {
+  const apiKey = DecryptStringAES(localStorage.getItem("apiKey"));
+  const cityName = input.value;
+  const units = "metric";
+  const lang = "en";
 
+  try {
+    // ! Http request url ( endpoint )
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=${units}&lang=${lang}`;
+
+    const response = await fetch(url).then((response) => response.json());
+    console.log(response);
+
+    //* obj destructuring
+    const { main, name, sys, weather } = response;
+
+    const iconUrl = `http://openweathermap.org/img/wn/${weather[0].icon}@2x.png`;
+
+    console.log(iconUrl);
+
+    
+  } catch (error) {
+    msgSpan.innerText = `City Not Found !`;
+  }
 };
 
 // ! -------------- INTERVIEW QUESTION -------------- //
@@ -31,4 +53,5 @@ const getWeatherDataFromAPI = () => {
 // ? inline(-HTML-), addEventListener, onClick, setAttribute("submit", submitFunction) - to set click method.
 // ? target vs. currentTarget
 // ? Status Codes Meanings
+// ? What is Http and http reques and endpoint
 // ! -------------- ------------------ -------------- //
