@@ -38,11 +38,9 @@ const getWeatherDataFromAPI = async () => {
     //* obj destructuring
     const { main, name, sys, weather } = response;
 
-    const iconUrl = `http://openweathermap.org/img/wn/${weather[0].icon}@2x.png`;
+    const iconUrl = `https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${weather[0].icon}.svg`;
 
     console.log(iconUrl);
-
-    
   } catch (error) {
     msgSpan.innerText = `City Not Found !`;
   }
