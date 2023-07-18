@@ -31,16 +31,25 @@ const getWeatherDataFromAPI = async () => {
   try {
     // ! Http request url ( endpoint )
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=${units}&lang=${lang}`;
-
     const response = await fetch(url).then((response) => response.json());
-    console.log(response);
 
     //* obj destructuring
     const { main, name, sys, weather } = response;
+    const iconUrlAWS = `https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${weather[0].icon}.svg`;
 
-    const iconUrl = `https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${weather[0].icon}.svg`;
-
-    console.log(iconUrl);
+    const createdLi = document.createElement("li");
+    createdLi.classList.add("city");
+    createdLi.innerHTML = ` <h2 class="city-name" data-name="${name},${
+      sys.country
+    }">
+                <span>${name}</span>
+                <sup>${sys.country}</sup>
+          </h2>
+          <div class="city-temp">${Math.round(main.temp)}<sup>°C</sup></div>
+          <figure>
+                <img class="city-icon" src="${iconUrlAWS}">
+                <figcaption>${weather[0].description}</figcaption>
+          </figure>`;
   } catch (error) {
     msgSpan.innerText = `City Not Found !`;
   }
