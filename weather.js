@@ -13,12 +13,17 @@ form.addEventListener("submit", (e) => {
   alert("Form was Submitted!");
   //* to prevent default function behind submit method.
   e.preventDefault();
+  getWeatherDataFromAPI();
 
   // form.reset();
   // input.value = "";
   // e.currentTarget.reset();
   e.target.reset();
 });
+
+const getWeatherDataFromAPI = () => {
+    
+};
 
 // ! -------------- INTERVIEW QUESTION -------------- //
 // ? .class .class vs. .class.class
