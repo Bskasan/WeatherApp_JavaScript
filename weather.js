@@ -62,4 +62,5 @@ const getWeatherDataFromAPI = async () => {
 // ? target vs. currentTarget
 // ? Status Codes Meanings
 // ? What is Http and http reques and endpoint
+// ? //append vs. prepend
 // ! -------------- ------------------ -------------- //
