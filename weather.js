@@ -9,6 +9,19 @@ localStorage.setItem(
   EncryptStringAES("c329c3b96528c0c0f92577a6850e5a5e")
 );
 
+form.addEventListener("submit", (e) => {
+  alert("Form was Submitted!");
+  //* to prevent default function behind submit method.
+  e.preventDefault();
+
+  // form.reset();
+  // input.value = "";
+  // e.currentTarget.reset();
+  e.target.reset();
+});
+
 // ! -------------- INTERVIEW QUESTION -------------- //
 // ? .class .class vs. .class.class
+// ? inline(-HTML-), addEventListener, onClick, setAttribute("submit", submitFunction) - to set click method.
+// ? target vs. currentTarget
 // ! -------------- ------------------ -------------- //
