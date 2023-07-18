@@ -21,12 +21,14 @@ form.addEventListener("submit", (e) => {
   e.target.reset();
 });
 
+// ! We are going to be using axios in React !
 const getWeatherDataFromAPI = () => {
-    
+
 };
 
 // ! -------------- INTERVIEW QUESTION -------------- //
 // ? .class .class vs. .class.class
 // ? inline(-HTML-), addEventListener, onClick, setAttribute("submit", submitFunction) - to set click method.
 // ? target vs. currentTarget
+// ? Status Codes Meanings
 // ! -------------- ------------------ -------------- //
