@@ -50,6 +50,7 @@ const getWeatherDataFromAPI = async () => {
                 <img class="city-icon" src="${iconUrlAWS}">
                 <figcaption>${weather[0].description}</figcaption>
           </figure>`;
+    listCities.append(createdLi);
   } catch (error) {
     msgSpan.innerText = `City Not Found !`;
   }
