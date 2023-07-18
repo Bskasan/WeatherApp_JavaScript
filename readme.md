@@ -1,5 +1,7 @@
 # WEATHER APP - JAVASCRIPT
 
+![WeatherAppJS](https://github.com/Bskasan/WeatherApp_JavaScript/assets/53233822/531a8b1e-94ac-4bb5-b41b-8077b7f69700)
+
 ## Description
 
 Project aims to display current weather data of searched city around the world with fetching Weather Api data.
