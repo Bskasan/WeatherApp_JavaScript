@@ -36,7 +36,7 @@ input {
   background: none;
   outline: none;
   color: inherit;
-  font-family: 'Itim', cursive;
+  font-family: "Itim", cursive;
 }
 
 img {
@@ -50,28 +50,27 @@ ul {
 }
 
 body {
-    font-family: 'Itim', cursive;
+  font-family: "Itim", cursive;
   background-image: url(../img/backgroundImg.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
   color: var(--text_dark);
   padding: 70px;
-  
 }
 
 center {
   margin-bottom: 100px;
 }
 
-form{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-h1{
-    font-family: 'Itim', cursive;
+h1 {
+  font-family: "Itim", cursive;
 }
 
 .container {
@@ -217,7 +216,7 @@ h1{
   height: 100px;
 }
 
-.container a:hover{
+.container a:hover {
   color: black;
 }
 

@@ -10,15 +10,15 @@ const listCities = document.querySelector(".container .cities");
 // );
 
 form.addEventListener("submit", (e) => {
-  alert("Form was Submitted!");
+  // alert("Form was Submitted!");
   //* to prevent default function behind submit method.
   e.preventDefault();
   getWeatherDataFromAPI();
+  form.reset();
 
-  // form.reset();
   // input.value = "";
   // e.currentTarget.reset();
-  e.target.reset();
+  // e.target.reset();
 });
 
 // ! We are going to be using axios in React !
@@ -37,6 +37,23 @@ const getWeatherDataFromAPI = async () => {
     const { main, name, sys, weather } = response;
     const iconUrlAWS = `https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${weather[0].icon}.svg`;
 
+    // ! Checking if the city has already been added to the list of cities.
+    const cityNameSpans = listCities.querySelectorAll("span");
+    //filter, map, reduce, forEach ==> array
+    //forEach => nodeList
+    if (cityNameSpans.length > 0) {
+      const filteredArray = [...cityNameSpans].filter(
+        (span) => span.innerText == name
+      );
+      if (filteredArray.length > 0) {
+        msgSpan.innerText = `You already know the weather for ${name}, Please search for another city 😉`;
+        setTimeout(() => {
+          msgSpan.innerText = "";
+        }, 5000);
+        return;
+      }
+    }
+
     const createdLi = document.createElement("li");
     createdLi.classList.add("city");
     createdLi.innerHTML = ` <h2 class="city-name" data-name="${name},${
@@ -51,8 +68,22 @@ const getWeatherDataFromAPI = async () => {
                 <figcaption>${weather[0].description}</figcaption>
           </figure>`;
     listCities.append(createdLi);
+
+    //Capturing => parent to child
+    listCities.addEventListener("click", (e) => {
+      alert("List clicked!");
+    });
+
+    //Bubbling => child to parent
+    createdLi.addEventListener("click", (e) => {
+      // alert("li element clicked");
+      window.location.href = `https://openweathermap.org/find?q=${name}`;
+    });
   } catch (error) {
     msgSpan.innerText = `City Not Found !`;
+    setTimeout(() => {
+      msgSpan.innerText = "";
+    }, 5000);
   }
 };
 
@@ -63,4 +94,7 @@ const getWeatherDataFromAPI = async () => {
 // ? Status Codes Meanings
 // ? What is Http and http reques and endpoint
 // ? //append vs. prepend
+// ? filter, map, reduce, forEach ==> array
+// ? forEach => nodeList
+
 // ! -------------- ------------------ -------------- //
